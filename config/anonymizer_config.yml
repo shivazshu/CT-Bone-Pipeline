@@ -1,0 +1,68 @@
+# GDCM Anonymizer Configuration
+
+# Directory paths
+directories:
+  input: "data/raw"
+  output: "data/anonymized"
+  quarantine: "data/quarantine"
+  logs: "logs"
+  audit: "audit_logs"
+
+# Anonymization settings
+anonymization:
+  # Tags to remove (in addition to default HIPAA tags)
+  additional_tags:
+    - name: "StudyDescription"
+      group: "0008"
+      element: "1030"
+    - name: "SeriesDescription"
+      group: "0008"
+      element: "103E"
+    - name: "ProtocolName"
+      group: "0018"
+      element: "1030"
+
+  # Tags to replace with fixed values
+  replace_tags:
+    - name: "PatientName"
+      value: "ANONYMOUS"
+    - name: "PatientID"
+      value: "ANON_ID"
+    - name: "InstitutionName"
+      value: "ANONYMOUS_INSTITUTION"
+
+# Validation settings
+validation:
+  verify_after_write: true
+  check_permissions: true
+  integrity_check: true
+  phi_check: true
+
+# Logging settings
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s - [AccessID:%(process)d]"
+  rotate_logs: true
+  max_log_size: 10485760  # 10MB
+  backup_count: 5
+
+# Security settings
+security:
+  encryption_key_path: "config/encryption.key"
+  audit_encryption: true
+  file_permissions: 0o640  # Read/write for owner, read for group
+  dir_permissions: 0o750   # Read/write/execute for owner, read/execute for group
+
+hipaa_tags:
+  - PatientName
+  - PatientID
+  - PatientBirthDate
+  - PatientAddress
+  - InstitutionName
+  - ReferringPhysicianName
+  - PatientSex
+  - OtherPatientIDs
+  - OtherPatientNames
+  - InstitutionAddress
+  - ReferringPhysicianAddress
+  - ReferringPhysicianPhone 

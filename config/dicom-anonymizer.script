@@ -1,0 +1,10 @@
+param patient-name = ANONYMOUS
+        param patient-id = ANONYMOUS-ID
+        param patient-birth-date = @remove()
+        param patient-sex = @keep()
+        param patient-age = @keep()
+        param study-date = @keep()
+        param study-time = @keep()
+        param accession-number = @hash()
+        param institution-name = ANONYMOUS-INSTITUTION
+        param referring-physician-name = ANONYMOUS-PHYSICIAN

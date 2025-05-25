@@ -1,0 +1,17 @@
+<Configuration>
+                <Server port="9090" />
+                <Pipeline name="Anonymization Pipeline">
+                    <ImportService 
+                        class="org.rsna.ctp.stdstages.DicomImportService"
+                        root="/Users/shivanshusingh/monai-final/data/raw"
+                        port="104"
+                        quarantine="/Users/shivanshusingh/monai-final/data/quarantine"
+                    />
+                    <DicomAnonymizer 
+                        class="org.rsna.ctp.stdstages.DicomAnonymizer"
+                        root="/Users/shivanshusingh/monai-final/data/anonymized"
+                        script="/Users/shivanshusingh/monai-final/config/dicom-anonymizer.script"
+                        quarantine="/Users/shivanshusingh/monai-final/data/quarantine"
+                    />
+                </Pipeline>
+            </Configuration>

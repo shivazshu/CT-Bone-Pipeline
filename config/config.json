@@ -1,0 +1,21 @@
+{
+  "server": {
+    "port": 9090,
+    "require-authentication": false
+  },
+  "pipeline": [
+    {
+      "id": "DicomImportService",
+      "class": "org.rsna.ctp.pipeline.ImportService",
+      "root": "data/raw",
+      "import-interval": 1000
+    },
+    {
+      "id": "DicomAnonymizer",
+      "class": "org.rsna.ctp.pipeline.DicomAnonymizer",
+      "root": "data/anonymized",
+      "script": "dicom-anonymizer.script",
+      "quarantine": "quarantine"
+    }
+  ]
+}

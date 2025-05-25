@@ -1,0 +1,11 @@
+mirc:
+  port: 9090
+  ctp_path: "lib/CTP-installer.jar"
+  config_file: "config/ctp-config.xml"
+  script_file: "config/dicom-anonymizer.script"
+
+directories:
+  input: "data/raw"
+  output: "data/anonymized"
+  quarantine: "data/quarantine"
+  logs: "logs" 
